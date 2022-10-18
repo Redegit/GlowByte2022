@@ -21,7 +21,7 @@ CREATE TABLE dwh_voronezh.dim_cars
  model_name   varchar(30) NOT NULL,
  revision_dt  date NOT NULL,
  deleted_flag char(1) NOT NULL,
- end_dt       date NOT NULL,
+ end_dt       date,
  PRIMARY KEY ( plate_num, start_dt )
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE dwh_voronezh.dim_drivers
  driver_license_num char(12) NOT NULL,
  driver_license_dt  date NOT NULL,
  deleted_flag       char(1) NOT NULL,
- end_dt             date NOT NULL,
+ end_dt             date,
  PRIMARY KEY ( personnel_num, start_dt )
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE dwh_voronezh.dim_clients
  start_dt     date NOT NULL,
  card_num     varchar(16) NOT NULL,
  deleted_flag char(1) NOT NULL,
- end_dt       date NOT NULL,
+ end_dt       date,
  PRIMARY KEY ( phone_num, start_dt )
 );
 
@@ -62,6 +62,7 @@ CREATE TABLE dwh_voronezh.fact_rides
  driver_pers_num     integer REFERENCES dwh_voronezh.dim_drivers(personnel_num),
  car_plate_num       char(9) REFERENCES dwh_voronezh.dim_cars(plate_num),
  ride_start_dt       timestamp(0),
+ ride_arrival_dt     timestamp(0) NOT NULL,
  ride_end_dt         timestamp(0) NOT NULL,
  PRIMARY KEY ( ride_id )
 );
