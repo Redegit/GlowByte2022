@@ -43,7 +43,7 @@ CREATE TABLE dwh_voronezh.dim_drivers
 
 CREATE TABLE dwh_voronezh.dim_clients
 (
- phone_num    varchar(15) NOT NULL UNIQUE,
+ phone_num    varchar(25) NOT NULL UNIQUE,
  start_dt     date NOT NULL,
  card_num     varchar(16) NOT NULL,
  deleted_flag char(1) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE dwh_voronezh.fact_rides
  point_to_txt        varchar(200) NOT NULL,
  distance_val        numeric(5,2) NOT NULL,
  price_amt           numeric(7,2) NOT NULL,
- client_phone_num    varchar(15) REFERENCES dwh_voronezh.dim_clients(phone_num),
+ client_phone_num    varchar(25) REFERENCES dwh_voronezh.dim_clients(phone_num),
  driver_pers_num     integer REFERENCES dwh_voronezh.dim_drivers(personnel_num),
  car_plate_num       char(9) REFERENCES dwh_voronezh.dim_cars(plate_num),
  ride_start_dt       timestamp(0),
