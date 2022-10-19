@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS dwh_voronezh.fact_payments;
 
 CREATE TABLE dwh_voronezh.fact_payments
 (
- transaction_id  integer NOT NULL UNIQUE,
+ transaction_id  SERIAL NOT NULL,
  card_num        varchar(16) NOT NULL,
  transaction_amt numeric(7,2) NOT NULL,
  transaction_dt  timestamp(0) NOT NULL,
